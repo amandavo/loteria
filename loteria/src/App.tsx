@@ -1,11 +1,11 @@
 import { Provider } from "./contexts/Contexto";
-import Principal from "./pages/Principal";
+import Rotas from "./routes/Routes";
 
 export default function App() {
   
   return (
     <Provider>
-      <Principal/>
+      <Rotas/>
     </Provider>
     
   );

@@ -1,0 +1,16 @@
+.menu {
+    padding: 10px;
+    font-family: Roboto;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.menu a {
+    text-decoration: none;
+    padding: 10px;
+    /* margin: 0 10px; */
+}
+
+.menu a:hover {
+    font-size: 1.5rem;
+}
