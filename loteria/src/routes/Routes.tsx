@@ -1,16 +1,26 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Menu from "../components/Menu";
-import Megasena from "../components/Megasena";
-import Lotofacil from "../components/Lotofacil";
-import Quina from "../components/Quina";
-import './index.css';
+import Megasena from "../pages/Megasena";
+import Timemania from '../pages/Timemania';
+import Quina from "../pages/Quina";
+import styled, { ThemeProvider } from 'styled-components';
+import { useContexto } from '../hooks';
 
-function Error() {
+export default function Rotas() {
+    const { tema } = useContexto();
     return (
-    <div id='erro'>
-        <h3>Erro 404</h3>
-        <h3>Página não encontrada</h3>
-    </div>
+        <ThemeProvider theme={tema}>
+            <BrowserRouter>
+                <Menu />
+                <Routes>
+                    <Route path="*" element={<Error/>} />
+                    <Route path="/" element={<Dashboard/>} />
+                    <Route path="/megasena" element={<Megasena />} />
+                    <Route path="/timemania" element={<Timemania />} />
+                    <Route path="/quina" element={<Quina />} />
+                </Routes>
+            </BrowserRouter>
+        </ThemeProvider>
     )
 }
 
@@ -18,17 +28,21 @@ function Dashboard() {
     return <></>;
 }
 
-export default function Rotas() {
+function Error() {
     return (
-        <BrowserRouter>
-            <Menu />
-            <Routes>
-                <Route path="*" element={<Error/>} />
-                <Route path="/" element={<Dashboard/>} />
-                <Route path="/megasena" element={<Megasena />} />
-                <Route path="/lotofacil" element={<Lotofacil />} />
-                <Route path="/quina" element={<Quina />} />
-            </Routes>
-        </BrowserRouter>
+    <Erro>
+        <h3>Erro 404</h3>
+        <h3>Página não encontrada</h3>
+    </Erro>
     )
 }
+
+const Erro = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 88vh;
+    width: 99vw;
+    font-family: Roboto;
+`;
